@@ -32,7 +32,7 @@
 
                     // If there are no matching tag words
                     if($count == 0){
-                        echo "<h1>No results</h1>";
+                        echo "<h1>No Results</h1>";
                     }else{
                     
                     // if matching tag words, Returns relevant search results from posts post_tags
