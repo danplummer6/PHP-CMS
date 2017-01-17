@@ -15,8 +15,15 @@
             <div class="col-md-8">
 
                 <?php
-                // This query selects all data from posts table and loops through to display each post in db.
-                $query = "SELECT * FROM posts";
+                // Catches category id to display specific category when clicked on sidebar  
+
+                if(isset($_GET['category'])){
+                   $post_category_id = $_GET['category']; 
+                }
+
+
+                // This query gets category id's
+                $query = "SELECT * FROM posts WHERE post_category_id = $post_category_id";
 
                 $select_all_posts = mysqli_query($connection, $query);
 
@@ -28,14 +35,6 @@
                     $post_image = $row['post_image'];
                     // SHortens text to first 200 characters
                     $post_content = substr($row['post_content'], 0,200);
-                    $post_status = $row['post_status'];
-
-                    // Displays if no posts are set to published
-                    if($post_status !== 'published'){
-                        echo "<h1>No Posts Here</h1>";
-                    }else{
-
-
                 ?>
                 <h1 class="page-header">
                     Page Heading
@@ -60,8 +59,7 @@
 
                 <?php
                 // Closes above loop
-                    } 
-                }
+                    }
                 ?>
 
                 <hr>
